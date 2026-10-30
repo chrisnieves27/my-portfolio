@@ -6,141 +6,36 @@
   <meta name="theme-color" content="#851c2c">
   <meta name="description" content="Personal portfolio of Chris Nieves Castro, a Holberton coding school student.">
   <title>Chris Nieves Castro — Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --paper: #faf9f6;
-      --ink: #191919;
-      --muted: #62605e;
-      --red: #851c2c;
-      --line: #d9d5d0;
-      --display: "Barlow Condensed", sans-serif;
-      --body: "DM Sans", sans-serif;
-      --gutter: clamp(22px, 5.5vw, 88px);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-offset: 6px; }
-    ::selection { background: var(--red); color: white; }
-    .skip { position: fixed; top: -100px; left: 20px; padding: 14px; background: white; z-index: 100; }
-    .skip:focus { top: 12px; }
-    .container { max-width: 1600px; margin: auto; padding-inline: var(--gutter); }
-
-    header { border-bottom: 1px solid var(--line); }
-    .header-inner { min-height: 90px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .brand { display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .09em; }
-    .brand-mark { display: grid; place-items: center; background: var(--red); color: white; width: 38px; height: 38px; font-family: var(--display); font-size: 24px; }
-    nav { display: flex; align-items: center; gap: clamp(18px, 3vw, 44px); }
-    nav a { font-size: 13px; padding-block: 10px; position: relative; }
-    nav a::after { content: ""; position: absolute; height: 2px; bottom: 3px; left: 0; right: 0; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .2s; }
-    nav a:hover::after, nav a[aria-current="location"]::after { transform: scaleX(1); }
-    .menu-toggle { display: none; border: 1px solid var(--line); background: transparent; padding: 10px 14px; cursor: pointer; }
-
-    .hero { padding-top: clamp(45px, 7vw, 100px); }
-    .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .16em; }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
-    .hero-grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: 36px; align-items: center; padding-block: 30px 55px; }
-    h1 { margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(76px, 10.8vw, 170px); line-height: .88; letter-spacing: -.025em; text-transform: uppercase; }
-    h1 span { display: block; }
-    h1 .surname { color: var(--red); }
-    .hero-copy { margin: 30px 0 26px; max-width: 350px; color: var(--muted); line-height: 1.7; font-size: 15px; }
-    .button { display: inline-flex; align-items: center; justify-content: space-between; gap: 42px; padding: 16px 22px; background: var(--ink); color: white; font-size: 13px; font-weight: 500; transition: background .2s, transform .2s; }
-    .button:hover { background: var(--red); transform: translateY(-3px); }
-    .button:active { transform: translateY(0); }
-
-    .art { aspect-ratio: 1; position: relative; overflow: hidden; background: var(--red); color: var(--paper); }
-    .art::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(#ffffff10 1px, transparent 1px), linear-gradient(90deg, #ffffff10 1px, transparent 1px); background-size: 12.5% 12.5%; }
-    .art::after { content: ""; position: absolute; width: 80%; height: 80%; border: 1px solid #ffffff45; border-radius: 50%; top: 10%; left: 10%; }
-    .art svg { width: 100%; height: 100%; position: relative; z-index: 1; }
-    .art-caption { position: absolute; bottom: 18px; left: 20px; right: 20px; display: flex; justify-content: space-between; font-size: 9px; letter-spacing: .15em; z-index: 2; }
-    .hero-bottom { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; border-top: 1px solid var(--line); font-size: 11px; color: var(--muted); }
-    .hero-bottom a { color: var(--ink); display: flex; gap: 15px; }
-    .hero-bottom a:hover { color: var(--red); }
-
-    .section { padding-block: clamp(55px, 7vw, 100px); border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr 2fr; gap: 36px; }
-    .section-label { font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; display: flex; gap: 18px; align-items: baseline; }
-    .section-label span { color: var(--red); }
-    h2 { font-family: var(--display); text-transform: uppercase; font-size: clamp(44px, 5vw, 72px); line-height: 1; font-weight: 500; margin: 0 0 24px; letter-spacing: -.01em; }
-    .section-content > p { font-size: 16px; line-height: 1.8; max-width: 540px; color: var(--muted); }
-    .fact { display: flex; flex-wrap: wrap; gap: 15px 32px; border-top: 1px solid var(--line); padding-top: 22px; margin-top: 35px; font-size: 13px; }
-    .fact span { color: var(--muted); }
-    .pending { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--line); padding: 8px 12px; }
-    .pending::before { content: ""; width: 5px; height: 5px; background: var(--muted); border-radius: 50%; }
-    .empty-work { margin-top: 30px; padding: 25px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-    .empty-work p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
-    .empty-work .asterisk { font-family: var(--display); color: var(--red); font-size: 65px; line-height: 1; }
-
-    .contact { background: var(--ink); color: var(--paper); }
-    .contact .section { border: 0; }
-    .contact .section-label span { color: #dc8f99; }
-    .contact h2 { font-size: clamp(56px, 7vw, 105px); }
-    .contact p { color: #b9b7b4; }
-    .contact-link { display: flex; justify-content: space-between; align-items: center; gap: 20px; max-width: 540px; padding: 22px 0; border-top: 1px solid #ffffff30; border-bottom: 1px solid #ffffff30; transition: color .2s; }
-    .contact-link:hover { color: #e9a5af; }
-    .contact-link small { display: block; color: #b9b7b4; font-size: 11px; margin-top: 7px; }
-    .contact-link .arrow { font-size: 30px; transition: transform .2s; }
-    .contact-link:hover .arrow { transform: translate(4px, -4px); }
-    footer { background: var(--ink); color: #b9b7b4; }
-    .footer-inner { border-top: 1px solid #ffffff25; padding-block: 25px; display: flex; justify-content: space-between; gap: 25px; font-size: 11px; }
-    footer a:hover { color: white; }
-
-    .entrance { animation: enter .8s both; }
-    .delay-one { animation-delay: .12s; }
-    .delay-two { animation-delay: .24s; }
-    .delay-three { animation-delay: .36s; }
-    @keyframes enter { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s, transform .7s; }
-    .js .reveal.visible { opacity: 1; transform: none; }
-
-    @media (min-width: 1500px) { .art { max-width: 510px; justify-self: end; width: 100%; } }
-    @media (max-width: 700px) {
-      .header-inner { min-height: 76px; flex-wrap: wrap; padding-block: 16px; }
-      .brand { font-size: 10px; }
-      .js .menu-toggle { display: block; }
-      nav { width: 100%; justify-content: space-between; padding-top: 8px; }
-      .js nav:not(.open) { display: none; }
-      .hero-grid { grid-template-columns: 1fr; gap: 34px; }
-      h1 { font-size: clamp(82px, 19vw, 132px); }
-      .art { max-width: 430px; width: 100%; justify-self: center; }
-      .hero-copy { max-width: 100%; }
-      .hero-bottom { gap: 20px; font-size: 10px; }
-      .section { grid-template-columns: 1fr; gap: 28px; }
-      .footer-inner { flex-wrap: wrap; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-      .js .reveal { opacity: 1; transform: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="./js/script.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+
   <header id="top">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="Chris Nieves Castro, home">
         <span class="brand-mark" aria-hidden="true">C.</span>
         <span>CHRIS NIEVES CASTRO</span>
       </a>
+
       <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu +</button>
+
       <nav id="navigation" aria-label="Main navigation">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
-        <a href="#contact">Connect ↗</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
     <section class="hero container" aria-labelledby="hero-title">
-      <div class="eyebrow entrance"><span class="dot"></span> Personal portfolio / Chris Nieves Castro</div>
+      <div class="eyebrow entrance">
+        <span class="dot"></span>
+        Personal portfolio / Chris Nieves Castro
+      </div>
+
       <div class="hero-grid">
         <div>
           <h1 id="hero-title" class="entrance delay-one">
@@ -148,40 +43,50 @@
             <span>Nieves</span>
             <span class="surname">Castro.</span>
           </h1>
+
           <p class="hero-copy entrance delay-two">Holberton coding school student.</p>
-          <a class="button entrance delay-three" href="#about">Meet Chris <span aria-hidden="true">↘</span></a>
+
+          <a class="button entrance delay-three" href="#about">
+            Meet Chris <span aria-hidden="true">↘</span>
+          </a>
         </div>
-        <div class="art entrance delay-two" role="img" aria-label="Abstract geometric letter C in white on dark red">
+
+        <div class="art entrance delay-two" role="img" aria-label="Abstract white letter C on dark red">
           <svg viewBox="0 0 500 500" aria-hidden="true">
             <defs>
               <linearGradient id="sculpture" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#ffffff"/>
-                <stop offset="1" stop-color="#c9beb8"/>
+                <stop offset="0" stop-color="#ffffff"></stop>
+                <stop offset="1" stop-color="#c9beb8"></stop>
               </linearGradient>
             </defs>
-            <path d="M350 140 A155 155 0 1 0 350 360 L310 313 A93 93 0 1 1 310 187 Z" fill="#3e0b15" transform="translate(13 15)"/>
-            <path d="M350 140 A155 155 0 1 0 350 360 L310 313 A93 93 0 1 1 310 187 Z" fill="url(#sculpture)"/>
-            <path d="M350 140 L310 187 M350 360 L310 313" stroke="#fff" stroke-opacity=".6"/>
-            <circle cx="362" cy="250" r="25" fill="#faf9f6"/>
-            <path d="M38 38h20M48 28v20M442 452h20M452 442v20" stroke="#ffffff70"/>
+            <path d="M350 140 A155 155 0 1 0 350 360 L310 313 A93 93 0 1 1 310 187 Z" fill="#3e0b15" transform="translate(13 15)"></path>
+            <path d="M350 140 A155 155 0 1 0 350 360 L310 313 A93 93 0 1 1 310 187 Z" fill="url(#sculpture)"></path>
+            <circle cx="362" cy="250" r="25" fill="#faf9f6"></circle>
+            <path d="M38 38h20M48 28v20M442 452h20M452 442v20" stroke="#ffffff70"></path>
           </svg>
-          <div class="art-caption"><span>CNC / PERSONAL IDENTITY</span><span>01 — C.</span></div>
+          <div class="art-caption">
+            <span>CNC / PERSONAL IDENTITY</span>
+            <span>01 — C.</span>
+          </div>
         </div>
       </div>
+
       <div class="hero-bottom entrance delay-three">
         <span>STUDENT AT HOLBERTON CODING SCHOOL</span>
         <a href="#about">Explore the portfolio <span aria-hidden="true">↓</span></a>
       </div>
     </section>
 
-    <!-- Replace pending content with verified personal facts before publication. -->
     <section id="about" class="container section reveal" aria-labelledby="about-title">
       <div class="section-label"><span>01</span> About me</div>
       <div class="section-content">
         <h2 id="about-title">A little introduction.</h2>
         <p>I'm Chris Nieves Castro, a Holberton coding school student.</p>
         <p>My personal introduction and biography will be added here.</p>
-        <div class="fact"><span>Learning focus</span><strong>Holberton coding school student</strong></div>
+        <div class="fact">
+          <span>Learning focus</span>
+          <strong>Holberton coding school student</strong>
+        </div>
       </div>
     </section>
 
@@ -208,20 +113,6 @@
         </div>
       </div>
     </section>
-
-    <section id="contact" class="contact" aria-labelledby="contact-title">
-      <div class="container section reveal">
-        <div class="section-label"><span>04</span> Connect</div>
-        <div class="section-content">
-          <h2 id="contact-title">Find me<br>on GitHub.</h2>
-          <p>A place to explore my public coding work.</p>
-          <a class="contact-link" href="https://github.com/chrisnieves27">
-            <span>GitHub<small>@chrisnieves27</small></span>
-            <span class="arrow" aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -231,69 +122,5 @@
       <a href="#top">Back to top ↑</a>
     </div>
   </footer>
-
-  <script>
-    document.documentElement.classList.add("js");
-
-    const menuButton = document.querySelector(".menu-toggle");
-    const navigation = document.querySelector("#navigation");
-
-    function closeMenu() {
-      navigation.classList.remove("open");
-      menuButton.setAttribute("aria-expanded", "false");
-      menuButton.textContent = "Menu +";
-    }
-
-    menuButton.addEventListener("click", () => {
-      const open = menuButton.getAttribute("aria-expanded") !== "true";
-      navigation.classList.toggle("open", open);
-      menuButton.setAttribute("aria-expanded", String(open));
-      menuButton.textContent = open ? "Close −" : "Menu +";
-    });
-
-    navigation.addEventListener("click", event => {
-      if (event.target.closest("a")) closeMenu();
-    });
-
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape" && navigation.classList.contains("open")) {
-        closeMenu();
-        menuButton.focus();
-      }
-    });
-
-    document.querySelector("#year").textContent = new Date().getFullYear();
-
-    const sections = document.querySelectorAll("main section[id]");
-    const reveals = document.querySelectorAll(".reveal");
-
-    if ("IntersectionObserver" in window) {
-      const revealObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.08 });
-      reveals.forEach(element => revealObserver.observe(element));
-
-      const sectionObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          navigation.querySelectorAll("a").forEach(link => {
-            if (link.getAttribute("href") === "#" + entry.target.id) {
-              link.setAttribute("aria-current", "location");
-            } else {
-              link.removeAttribute("aria-current");
-            }
-          });
-        });
-      }, { rootMargin: "-15% 0px -55% 0px", threshold: 0 });
-      sections.forEach(section => sectionObserver.observe(section));
-    } else {
-      reveals.forEach(element => element.classList.add("visible"));
-    }
-  </script>
 </body>
 </html>
